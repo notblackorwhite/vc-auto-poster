@@ -1,0 +1,98 @@
+# VC Auto-poster Config
+
+################################################################################
+# Required Fields
+################################################################################
+
+# URL & Topic ID
+#
+# `url` is the full URL to a Discourse site with the votecount plugin. The
+# string must include both the scheme ('https://') and sub-domains ('www').
+#
+# `topic` is the topic ID (integer) of the topic you want the bot to post
+# votecounts in.
+#
+# Example:
+# url = "https://www.sample.site.com"
+# topic = 1234
+
+# API Username & Key
+#
+# Example:
+# api_username = "myusername"
+# api_key = "thisisaverylongstringwithnumbers12348912734"
+
+################################################################################
+# Optional Fields
+################################################################################
+
+# Votecount Frequency
+#
+# `min_delay` is the minimum number of minutes that must elapse between
+# votecounts. The default is 20.
+#
+# `min_posts` is the minimum number of posts that must be made after the last
+# votecount before a new one is posted. The default is 50.
+#
+# If `auto_align` is set, and `min_delay` evenly divides 60, the initial delay
+# will be reduced, so the votecount is posted without an offset. For example,
+# if the program is started at :17 with a 20-minute delay, the first votecount
+# will be posted after only 3 minutes at :20. The default is `true`.
+#
+# Example (20 minutes, 50 posts):
+# min_delay = 20
+# min_posts = 50
+# auto_align = true
+
+# Special tags
+#
+# `suppress_tags` is a list of tags that will suppress output if the thread has
+# *any* of them. The default is no value.
+#
+# Example:
+# suppress_tags = ["likes-disabled", "ita-active"]
+
+# Style
+#
+# There are a few options to control what the votecount post looks like.
+#
+# `pretty` will add a title, and a table with the votes in addition to the raw
+# votecount that works with the plugin. The default is `false`.
+#
+# `links` will replace player names in the table with a link to the post the
+# vote was made in (does nothing if `pretty` is `false`). The default is
+# `false`.
+#
+# Example:
+# pretty = false
+# links = false
+
+# Game Name
+#
+# The name you want the bot to use for the game. Does nothing if `pretty` is
+# false. The default is no value.
+#
+# Example:
+# game_name = "myusername's Cop 13er"
+
+# Voter Typo Tolerance
+#
+# If `keep_unknown_votes` is not set, the bot will replace any vote it cannot
+# find a matching name for with `NO_VOTE`. If set, it will keep the unknown
+# vote, and include it in future VCs as it was submitted. The default is
+# `false`.
+#
+# If `unique_voter_substring_match` is set, any vote submitted that does not
+# match a living player's name exactly will only be used to find a player whose
+# name partially matches if there is exactly 1 partial match. If not set, it
+# will pick the first match instead. The default is `false`.
+#
+# `min_voter_substring_length` determines how long a voter name must be before
+# the bot tries to find a partial match, and it will ignore all votes submitted
+# for names shorter than the set value unless they are an exact match for a
+# living player. The default is 3.
+#
+# Example:
+# keep_unknown_votes = false
+# unique_voter_substring_match = false
+# min_voter_substring_length = 3
