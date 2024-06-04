@@ -33,6 +33,7 @@ class Voter:
         min_voter_substring_length: int,
     ) -> str | None:
         """Normalizes a name given a player list"""
+        name = name.strip()
         if name in alive:
             return name
 
@@ -64,6 +65,7 @@ class Voter:
         min_voter_substring_length: int,
     ) -> str:
         """Normalizes a vote."""
+        vote = vote.strip()
         if vote == NO_VOTE:
             return vote
 

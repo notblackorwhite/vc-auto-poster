@@ -238,7 +238,7 @@ class Poster:
                 self.min_posts,
                 last_post_num,
                 last_post_num - self.last_vc_at,
-                last_post_num + self.min_posts,
+                self.last_vc_at + self.min_posts,
             )
             return True
 

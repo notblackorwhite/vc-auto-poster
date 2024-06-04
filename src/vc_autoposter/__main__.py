@@ -20,17 +20,26 @@ logger.addHandler(handler)
 
 def schedule_post(scheduler: sched.scheduler, delay: int, poster: Poster):
     """Schedule new post"""
+    new_delay = delay
+    config: Config = load_config()
+    if int(delay / 60) != config.min_delay:
+        new_delay = config.min_delay * 60
+        logger.info(
+            "Delay has been updated. It was %s minutes, and is now %s.",
+            int(delay / 60),
+            int(new_delay / 60),
+        )
+
     scheduler.enter(
-        delay,
+        new_delay,
         1,
         schedule_post,
         (
             scheduler,
-            delay,
+            new_delay,
             poster,
         ),
     )
-    config: Config = load_config()
     poster.update_from_config(config)
     poster.post_new_vc()
 
